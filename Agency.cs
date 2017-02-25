@@ -13,8 +13,8 @@ namespace PetShop
         static readonly Random Rnd = new Random();
         public static HashSet<Dog> GetAllDogs()
         {
-            var totalDogs = 9999;
-            var totalFleas = 100;
+            var totalDogs = 999;
+            var totalFleas = 10000;
             var dogs = new HashSet<Dog>();
             for (int i = 1; i <= totalDogs; i++)
             {
