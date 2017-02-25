@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetShop
 {
-    class Flea : IFlea
+    class Flea
     {
         public string Name { get; set; }
         public override string ToString()

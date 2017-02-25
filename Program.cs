@@ -10,7 +10,7 @@ namespace PetShop
     {
         static void Main(string[] args)
         {
-            HashSet<IDog> dogs = Agency.GetAllDogs();
+            HashSet<Dog> dogs = Agency.GetAllDogs();
 
             var toFind = Agency.DogToFind();
             if (!dogs.Contains(toFind))

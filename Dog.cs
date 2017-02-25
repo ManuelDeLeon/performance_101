@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace PetShop
 {
-    class Dog : IDog
+    class Dog
     {
-        private List<IFlea> Fleas = new List<IFlea>();
-        public void AddFlea(IFlea flea)
+        private List<Flea> Fleas = new List<Flea>();
+        public void AddFlea(Flea flea)
         {
             var fleaExists = false;
             foreach(var f in Fleas)
@@ -36,7 +36,7 @@ namespace PetShop
                 && this.Name == otherDog.Name;
         }
 
-        private bool FleasAreEqual(List<IFlea> fleas1, List<IFlea> fleas2)
+        private bool FleasAreEqual(List<Flea> fleas1, List<Flea> fleas2)
         {
             var areEqual = true;
             

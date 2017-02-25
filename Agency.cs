@@ -11,19 +11,19 @@ namespace PetShop
     class Agency
     {
         static readonly Random Rnd = new Random();
-        public static HashSet<IDog> GetAllDogs()
+        public static HashSet<Dog> GetAllDogs()
         {
             var totalDogs = 9999;
             var totalFleas = 100;
-            var dogs = new HashSet<IDog>();
+            var dogs = new HashSet<Dog>();
             for (int i = 1; i <= totalDogs; i++)
             {
                 var dogName = Rnd.Next(999).ToString();
-                IDog dog = new Dog { Name = dogName };
+                Dog dog = new Dog { Name = dogName };
                 for(int h = 1; h <= totalFleas; h ++)
                 {
                     var fleaName = Rnd.Next(99).ToString();
-                    IFlea flea = new Flea { Name = fleaName };
+                    Flea flea = new Flea { Name = fleaName };
                     dog.AddFlea(flea);
                 }
                 if (!dogs.Contains(dog))
@@ -37,9 +37,9 @@ namespace PetShop
             return dogs;
         }
 
-        public static IDog DogToFind()
+        public static Dog DogToFind()
         {
-            IDog toFind = new Dog { Name = "AAA" };
+            Dog toFind = new Dog { Name = "AAA" };
             toFind.AddFlea(new Flea { Name = "ZZ" });
             return toFind;
         }

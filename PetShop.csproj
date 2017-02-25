@@ -46,8 +46,6 @@
     <Compile Include="Dog.cs" />
     <Compile Include="Agency.cs" />
     <Compile Include="Flea.cs" />
-    <Compile Include="IDog.cs" />
-    <Compile Include="IFlea.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
