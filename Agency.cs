@@ -11,7 +11,7 @@ namespace PetShop
     class Agency
     {
         static readonly Random Rnd = new Random();
-        public static HashSet<Dog> GetAllDogs()
+        static HashSet<Dog> GetAllDogs()
         {
             var totalDogs = 999;
             var totalFleas = 10000;
@@ -37,11 +37,44 @@ namespace PetShop
             return dogs;
         }
 
-        public static Dog DogToFind()
+        static Dog DogToFind()
         {
             Dog toFind = new Dog { Name = "AAA" };
             toFind.AddFlea(new Flea { Name = "ZZ" });
             return toFind;
+        }
+
+        public static void PrintAverage(int times)
+        {
+            var totalTimes = new List<double>();
+            for(int i = 1; i <= times; i++)
+            {
+                var start = DateTime.Now;
+                RunAndQuit();
+                var end = DateTime.Now;
+                var totalSeconds = (end - start).TotalSeconds;
+                totalTimes.Add(totalSeconds);
+            }
+            var averageTime = totalTimes.Average();
+            Console.WriteLine("Average in seconds: " + averageTime);
+            Console.WriteLine("");
+            Console.WriteLine("Press any key...");
+            Console.ReadKey();
+        }
+        public static void RunAndQuit()
+        {
+            HashSet<Dog> dogs = Agency.GetAllDogs();
+
+            var toFind = Agency.DogToFind();
+            if (!dogs.Contains(toFind))
+            {
+                throw new Exception("Can't find the dog. Please try again.");
+            }
+        }
+
+        public static void RunAndPrintTime()
+        {
+            PrintAverage(1);
         }
     }
 }

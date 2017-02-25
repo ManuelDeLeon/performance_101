@@ -10,13 +10,15 @@ namespace PetShop
     {
         static void Main(string[] args)
         {
-            HashSet<Dog> dogs = Agency.GetAllDogs();
+            // See how long the process takes
+            Agency.RunAndPrintTime();
 
-            var toFind = Agency.DogToFind();
-            if (!dogs.Contains(toFind))
-            {
-                throw new Exception("Can't find the dog. Please try again.");
-            }
+            // // Useful for profiling 
+            // // (no need to press any key, it goes straight to the report)
+            // Agency.RunAndQuit();
+
+            // // See the average time it takes, after optimizing Dog & Flea
+            // Agency.PrintAverage(10);
         }
     }
 }
