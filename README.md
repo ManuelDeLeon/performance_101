@@ -7,3 +7,6 @@ This is a C# project with a lot of inefficiencies. See how much you can optimize
 3. Two dogs are the same if they have A) the same name and B) the same fleas (regardless of the order).
 4. Two fleas are the same if they have the same name.
 5. A dog can't have two fleas of the same name.
+
+# Note
+To give you an idea of how much it can improve, I got this running from ~12s down to ~0.5s on my setup. Of course your mileage may vary.
