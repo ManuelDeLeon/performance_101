@@ -34,7 +34,6 @@ namespace PetShop
 
             var toFind = DogToFind();
             dogs.Add(toFind);
-            dogs.Add(toFind);
             return dogs;
         }
 
@@ -69,7 +68,31 @@ namespace PetShop
             var toFind = Agency.DogToFind();
             if (!dogs.Contains(toFind))
             {
-                throw new Exception("Can't find the dog. Please try again.");
+                Console.WriteLine("Can't find one of the dogs. Something's wrong with the code.\n");
+            }
+            var flea1 = new Flea { Name = "xqzrbn" };
+            var flea2 = new Flea { Name = "xqzrbn" };
+            var flea3 = new Flea { Name = "krumld" };
+
+            if (typeof(Flea).GetMethod("Equals").DeclaringType == typeof(Flea))
+            {
+                if (!flea1.Equals(flea2) || flea1.Equals(flea3))
+                {
+                    Console.WriteLine("Flea equality doesn't work.\nTwo fleas are the same if they have the same name.\n");
+                }
+            }
+
+            var dog1 = new Dog { Name = "xqzrbn" };
+            dog1.AddFlea(flea1);
+            var dog2 = new Dog { Name = "xqzrbn" };
+            dog2.AddFlea(flea2);
+            var dog3 = new Dog { Name = "krumld" };
+            dog3.AddFlea(flea2);
+            var dog4 = new Dog { Name = "xqzrbn" };
+            dog4.AddFlea(flea3);
+            if (!dog1.Equals(dog2) || dog1.Equals(dog3) || dog1.Equals(dog4))
+            {
+                Console.WriteLine("Dog equality doesn't work.\nTwo dogs are the same if they have the same name and they have the same fleas (regardless of the order).\n");
             }
         }
 
