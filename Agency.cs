@@ -34,6 +34,7 @@ namespace PetShop
 
             var toFind = DogToFind();
             dogs.Add(toFind);
+            dogs.Add(toFind);
             return dogs;
         }
 
