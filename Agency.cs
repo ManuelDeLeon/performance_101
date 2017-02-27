@@ -14,15 +14,15 @@ namespace PetShop
         static HashSet<Dog> GetAllDogs()
         {
             var totalDogs = 999;
-            var totalFleas = 10000;
+            var totalFleas = 1000;
             var dogs = new HashSet<Dog>();
             for (int i = 1; i <= totalDogs; i++)
             {
-                var dogName = Rnd.Next(999).ToString();
+                var dogName = Rnd.Next(totalDogs).ToString();
                 Dog dog = new Dog { Name = dogName };
                 for(int h = 1; h <= totalFleas; h ++)
                 {
-                    var fleaName = Rnd.Next(99).ToString();
+                    var fleaName = Rnd.Next(totalFleas).ToString();
                     Flea flea = new Flea { Name = fleaName };
                     dog.AddFlea(flea);
                 }
