@@ -26,10 +26,7 @@ namespace PetShop
                     Flea flea = new Flea { Name = fleaName };
                     dog.AddFlea(flea);
                 }
-                if (!dogs.Contains(dog))
-                {
-                    dogs.Add(dog);
-                }
+                dogs.Add(dog);
             }
 
             var toFind = DogToFind();
