@@ -56,7 +56,7 @@ namespace PetShop
                 }
             }
 
-            return areEqual;
+            return areEqual && fleas1.Count() == fleas2.Count();
         }
 
         public override int GetHashCode()

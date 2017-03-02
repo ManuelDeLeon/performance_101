@@ -87,7 +87,10 @@ namespace PetShop
             dog3.AddFlea(flea2);
             var dog4 = new Dog { Name = "xqzrbn" };
             dog4.AddFlea(flea3);
-            if (!dog1.Equals(dog2) || dog1.Equals(dog3) || dog1.Equals(dog4))
+            var dog5 = new Dog { Name = "xqzrbn" };
+            dog5.AddFlea(flea2);
+            dog5.AddFlea(flea3);
+            if (!dog1.Equals(dog2) || dog1.Equals(dog3) || dog1.Equals(dog4) || dog4.Equals(dog5))
             {
                 Console.WriteLine("Dog equality doesn't work.\nTwo dogs are the same if they have the same name and they have the same fleas (regardless of the order).\n");
             }
