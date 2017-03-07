@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetShop
+﻿namespace PetShop
 {
-    class Flea
+    public class Flea
     {
         public string Name { get; set; }
         public override string ToString()

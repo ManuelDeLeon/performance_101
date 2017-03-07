@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PetShop
 {
-    class Dog
+    public class Dog
     {
-        private List<Flea> Fleas = new List<Flea>();
+        private readonly List<Flea> _fleas = new List<Flea>();
+
         public void AddFlea(Flea flea)
         {
             var fleaExists = false;
-            foreach(var f in Fleas)
+            foreach(var f in _fleas)
             {
                 if (f.Name == flea.Name)
                 {
@@ -21,7 +19,7 @@ namespace PetShop
             }
             if (!fleaExists)
             {
-                Fleas.Add(flea);
+                _fleas.Add(flea);
             }
         }
 
@@ -32,7 +30,7 @@ namespace PetShop
             var otherDog = other as Dog;
             if (otherDog == null) return false;
             return
-                FleasAreEqual(this.Fleas, otherDog.Fleas)
+                FleasAreEqual(this._fleas, otherDog._fleas)
                 && this.Name == otherDog.Name;
         }
 
@@ -61,7 +59,7 @@ namespace PetShop
 
         public override int GetHashCode()
         {
-            var fleas = this.Fleas
+            var fleas = this._fleas
                     .OrderBy(flea => flea.Name)
                     .Select(flea => flea.Name)
                     .Aggregate((finalStr, itemStr) => finalStr + "-" + itemStr);

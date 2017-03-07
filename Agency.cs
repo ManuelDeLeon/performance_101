@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using BenchmarkDotNet.Attributes;
 
 namespace PetShop
 {
-    class Agency
+    public class Agency
     {
         static readonly Random Rnd = new Random();
         static HashSet<Dog> GetAllDogs()
@@ -49,29 +51,31 @@ namespace PetShop
             var totalTimes = new List<double>();
             for(int i = 1; i <= times; i++)
             {
-                var start = DateTime.Now;
+                var start = Stopwatch.StartNew();
                 RunAndQuit();
-                var end = DateTime.Now;
-                var totalSeconds = (end - start).TotalSeconds;
+                start.Stop();
+                var totalSeconds = start.ElapsedMilliseconds;
                 totalTimes.Add(totalSeconds);
             }
             var averageTime = totalTimes.Average();
-            Console.WriteLine("Average in seconds: " + averageTime);
-            Console.WriteLine("");
-            Console.WriteLine("Press any key...");
-            Console.ReadKey();
+            //Console.WriteLine("Average in seconds: " + averageTime);
+            //Console.WriteLine("");
+            //Console.WriteLine("Press any key...");
+            //Console.ReadKey();
         }
         public static void RunAndQuit()
         {
-            HashSet<Dog> dogs = Agency.GetAllDogs();
+            HashSet<Dog> dogs = GetAllDogs();
 
-            var toFind = Agency.DogToFind();
+            Dog toFind = DogToFind();
+
             if (!dogs.Contains(toFind))
             {
                 throw new Exception("Can't find the dog. Please try again.");
             }
         }
 
+        [Benchmark]
         public static void RunAndPrintTime()
         {
             PrintAverage(1);
