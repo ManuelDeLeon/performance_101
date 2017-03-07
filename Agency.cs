@@ -21,7 +21,7 @@ namespace PetShop
                 for(int h = 1; h <= totalFleas; h ++)
                 {
                     var fleaName = Rnd.Next(totalFleas).ToString();
-                    Flea flea = new Flea { Name = fleaName };
+                    Flea flea = new Flea(fleaName);
                     dog.AddFlea(flea);
                 }
                 if (!dogs.Contains(dog))
@@ -38,7 +38,7 @@ namespace PetShop
         static Dog DogToFind()
         {
             Dog toFind = new Dog { Name = "AAA" };
-            toFind.AddFlea(new Flea { Name = "ZZ" });
+            toFind.AddFlea(new Flea("ZZ"));
             return toFind;
         }
 

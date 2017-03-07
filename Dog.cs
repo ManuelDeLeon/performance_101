@@ -5,19 +5,11 @@ namespace PetShop
 {
     public class Dog
     {
-        private readonly List<Flea> _fleas = new List<Flea>();
+        private readonly HashSet<Flea> _fleas = new HashSet<Flea>();
 
         public void AddFlea(Flea flea)
         {
-            var fleaExists = false;
-            foreach(var f in _fleas)
-            {
-                if (f.Name == flea.Name)
-                {
-                    fleaExists = true;
-                }
-            }
-            if (!fleaExists)
+            if (!_fleas.Contains(flea))
             {
                 _fleas.Add(flea);
             }
@@ -30,7 +22,7 @@ namespace PetShop
             var otherDog = other as Dog;
             if (otherDog == null) return false;
             return
-                FleasAreEqual(this._fleas, otherDog._fleas)
+                FleasAreEqual(this._fleas.ToList(), otherDog._fleas.ToList())
                 && this.Name == otherDog.Name;
         }
 
