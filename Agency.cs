@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 
 namespace PetShop
@@ -58,9 +54,9 @@ namespace PetShop
                 totalTimes.Add(totalSeconds);
             }
             var averageTime = totalTimes.Average();
-            //Console.WriteLine("Average in seconds: " + averageTime);
-            //Console.WriteLine("");
-            //Console.WriteLine("Press any key...");
+            Console.WriteLine("Average in seconds: " + averageTime);
+            Console.WriteLine("");
+            Console.WriteLine("Press any key...");
             //Console.ReadKey();
         }
         public static void RunAndQuit()
@@ -75,7 +71,7 @@ namespace PetShop
             }
         }
 
-        [Benchmark]
+        //[Benchmark]
         public static void RunAndPrintTime()
         {
             PrintAverage(1);

@@ -11,7 +11,7 @@ namespace PetShop
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<Agency>();
+            //BenchmarkRunner.Run<Agency>();
 
             // See how long the process takes
             //Agency.RunAndPrintTime();
