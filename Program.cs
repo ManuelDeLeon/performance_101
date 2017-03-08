@@ -14,7 +14,7 @@ namespace PetShop
             //BenchmarkRunner.Run<Agency>();
 
             // See how long the process takes
-            //Agency.RunAndPrintTime();
+            Agency.RunAndPrintTime();
 
             // // Useful for profiling 
             // // (no need to press any key, it goes straight to the report)

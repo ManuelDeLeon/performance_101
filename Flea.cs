@@ -21,7 +21,7 @@ namespace PetShop
 
         public bool Equals(Flea other)
         {
-            return string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase);
+            return string.Equals(Name, other?.Name, StringComparison.OrdinalIgnoreCase);
         }
 
         public override bool Equals(object obj)

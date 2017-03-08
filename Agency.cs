@@ -62,7 +62,7 @@ namespace PetShop
             Console.WriteLine("Average in seconds: " + averageTime);
             Console.WriteLine("");
             Console.WriteLine("Press any key...");
-            //Console.ReadKey();
+            Console.ReadKey();
         }
         public static void RunAndQuit()
         {
