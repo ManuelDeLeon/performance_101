@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using BenchmarkDotNet.Running;
 using NUnit.Framework;
 
 namespace PetShop
@@ -211,14 +210,6 @@ namespace PetShop
 
             // // See the average time it takes, after optimizing Dog & Flea
             // Agency.PrintAverage(10);
-        }
-
-        //[Test]
-        public void Benchmark()
-        {
-            var summary = BenchmarkRunner.Run<Agency>();
-
-            //Console.WriteLine(summary.);
         }
     }
 }

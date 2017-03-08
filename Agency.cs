@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using BenchmarkDotNet.Attributes;
 
 namespace PetShop
 {
@@ -75,8 +74,7 @@ namespace PetShop
                 throw new Exception("Can't find the dog. Please try again.");
             }
         }
-
-        [Benchmark]
+        
         public static void RunAndPrintTime()
         {
             PrintAverage(1);
