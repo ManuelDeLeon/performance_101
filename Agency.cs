@@ -11,33 +11,38 @@ namespace PetShop
         static readonly Random Rnd = new Random();
         static HashSet<Dog> GetAllDogs()
         {
-            var totalDogs = 999;
-            var totalFleas = 1000;
+            int totalDogs = 999;
+            int totalFleas = 1000;
+
             var dogs = new HashSet<Dog>();
+
             for (int i = 1; i <= totalDogs; i++)
             {
-                var dogName = Rnd.Next(totalDogs).ToString();
-                Dog dog = new Dog { Name = dogName };
-                for(int h = 1; h <= totalFleas; h ++)
+                string dogName = Rnd.Next(totalDogs).ToString();
+                Dog dog = new Dog(dogName);
+
+                for (int h = 1; h <= totalFleas; h++)
                 {
                     var fleaName = Rnd.Next(totalFleas).ToString();
                     Flea flea = new Flea(fleaName);
                     dog.AddFlea(flea);
                 }
+
                 if (!dogs.Contains(dog))
                 {
                     dogs.Add(dog);
                 }
             }
 
-            var toFind = DogToFind();
+            Dog toFind = DogToFind();
             dogs.Add(toFind);
+
             return dogs;
         }
 
-        static Dog DogToFind()
+        public static Dog DogToFind()
         {
-            Dog toFind = new Dog { Name = "AAA" };
+            Dog toFind = new Dog("AAA");
             toFind.AddFlea(new Flea("ZZ"));
             return toFind;
         }
@@ -71,7 +76,7 @@ namespace PetShop
             }
         }
 
-        //[Benchmark]
+        [Benchmark]
         public static void RunAndPrintTime()
         {
             PrintAverage(1);

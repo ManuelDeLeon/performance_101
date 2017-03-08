@@ -1,62 +1,49 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PetShop
 {
     public class Dog
     {
-        private readonly HashSet<Flea> _fleas = new HashSet<Flea>();
+        public readonly HashSet<Flea> Fleas = new HashSet<Flea>(Flea.NameComparer);
+
+        public Dog() { }
+
+        public Dog(string name)
+        {
+            Name = name;
+        }
+
+        public Dog(string name, HashSet<Flea> fleas) : this(name)
+        {
+            Fleas = fleas;
+        }
 
         public void AddFlea(Flea flea)
         {
-            if (!_fleas.Contains(flea))
-            {
-                _fleas.Add(flea);
-            }
+            Fleas.Add(flea);
         }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public override bool Equals(object other)
+        public override bool Equals(object obj)
         {
-            var otherDog = other as Dog;
-            if (otherDog == null) return false;
-            return
-                FleasAreEqual(this._fleas.ToList(), otherDog._fleas.ToList())
-                && this.Name == otherDog.Name;
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((Dog)obj);
         }
 
-        private bool FleasAreEqual(List<Flea> fleas1, List<Flea> fleas2)
+        private bool Equals(Dog other)
         {
-            var areEqual = true;
-            
-            foreach (var flea1 in fleas1)
-            {
-                var foundInSecond = false;
-                foreach (var flea2 in fleas2)
-                {
-                    if (flea1.Name == flea2.Name)
-                    {
-                        foundInSecond = true;
-                    }
-                }
-                if (areEqual && !foundInSecond)
-                {
-                    areEqual = false;
-                }
-            }
-
-            return areEqual;
+            return string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase) && Fleas.SetEquals(other.Fleas);
         }
 
         public override int GetHashCode()
         {
-            var fleas = this._fleas
-                    .OrderBy(flea => flea.Name)
-                    .Select(flea => flea.Name)
-                    .Aggregate((finalStr, itemStr) => finalStr + "-" + itemStr);
-            return (fleas + "-" + this.Name).GetHashCode();
-
+            // wow, this implemention of GetHashCode improves significantly improves performance 
+            return string.Join("-", Fleas.Select(flea => flea.Name), Name).GetHashCode();
         }
 
         public override string ToString()
